@@ -446,7 +446,7 @@
 
               if (operation == 'import') {
                 validOwners[ownerKeys[y]] = {
-                  name : owners[ownerKeys[y]] ? owners[ownerKeys[y]] : 'Owner '  (y+1),
+                  name : owners[ownerKeys[y]] ? owners[ownerKeys[y]] : 'Owner ' + (y+1),
                   address : ownerKeys[y]
                 };
               } else {
