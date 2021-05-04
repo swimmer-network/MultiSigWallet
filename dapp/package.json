@@ -82,7 +82,7 @@
     "node-gyp": "^8.0.0",
     "node-hid": "0.5.4",
     "spinkit": "1.2.5",
-    "web3": "git+https://github.com/denisgranha/web3.js.git#7c26a69466c3217bc095ed8c797698bf6f1110fe",
+    "web3": "git+https://github.com/pangolin-community/web3.js.git",
     "web3-provider-engine": "git+https://github.com/denisgranha/provider-engine.git#compiled-subprovider"
   },
   "devDependencies": {
