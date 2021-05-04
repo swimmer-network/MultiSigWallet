@@ -140,20 +140,12 @@ if (isElectron) {
 var txDefault = {
   ethereumNodes : [
     {
-      url : "https://mainnet.infura.io:443",
+      url : "https://api.avax.network/ext/bc/C/rpc",
       name: "Remote Mainnet"
     },
     {
-      url : "https://ropsten.infura.io:443",
-      name: "Remote Ropsten"
-    },
-    {
-      url : "https://kovan.infura.io:443",
-      name: "Remote Kovan"
-    },
-    {
-      url : "https://rinkeby.infura.io:443",
-      name: "Remote Rinkeby"
+      url : "https://api.avax-test.network/ext/bc/C/rpc",
+      name: "Remote Fuji"
     },
     {
       url : "http://localhost:8545",
@@ -162,20 +154,12 @@ var txDefault = {
   ],
   walletFactoryAddresses: {
     'mainnet': {
-      name: 'Mainnet',
+      name: 'Avalanche Mainnet',
       address: txDefaultOrig.walletFactoryAddress
     },
-    'ropsten': {
-      name: 'Ropsten',
-      address: '0x5cb85db3e237cac78cbb3fd63e84488cac5bd3dd'
-    },
-    'kovan': {
-      name: 'Kovan',
-      address: '0x2c992817e0152a65937527b774c7a99a84603045'
-    },
-    'rinkeby': {
-      name: 'Rinkeby',
-      address: '0x19ba60816abca236baa096105df09260a4791418'
+    'fuji': {
+      name: 'Fuji Testnet',
+      address: '0x5Ae68C87FC51E78996195d0D54FB60277c244431'
     },
     'privatenet': {
       name: 'Privatenet',
