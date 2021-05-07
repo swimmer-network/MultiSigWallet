@@ -12,7 +12,7 @@ var txDefaultOrig =
   },
   gasLimit: 350000,
   gasPrice: 225 * 10e8,
-  ethereumNode: "https://api.avax-test.network/ext/bc/C/rpc",
+  ethereumNode: "https://api.avax.network/ext/bc/C/rpc",
   connectionChecker: {
     method : "OPTIONS",
     url : "https://www.google.com",
