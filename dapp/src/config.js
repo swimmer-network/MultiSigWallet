@@ -1,7 +1,7 @@
 var txDefaultOrig =
 {
   websites: {
-    "wallet": "https://wallet.gnosis.pm",
+    "wallet": "https://multisig.pangolin.network/",
     "gnosis": "https://gnosis.pm",
     "ethGasStation": "https://safe-relay.gnosis.pm/api/v1/gas-station/"
   },
