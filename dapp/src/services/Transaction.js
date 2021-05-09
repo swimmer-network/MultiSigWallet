@@ -14,7 +14,7 @@
           if (!e && receipt) {
             receipt = Web3Service.toChecksumAddress(receipt);
             receipt.decodedLogs = Wallet.decodeLogs(receipt.logs);
-            factory.update(receipt.transactionHash, { receipt: receipt });
+            factory.update(receipt.transactionHash, {receipt: receipt});
 
             // call callback if it has
             if (factory.callbacks[receipt.transactionHash]) {
@@ -28,7 +28,7 @@
           if (!e && info) {
             // Convert info object to an object containing checksum addresses
             info = Web3Service.toChecksumAddress(info);
-            factory.update(info.hash, { info: info });
+            factory.update(info.hash, {info: info});
           }
         }
 
@@ -37,12 +37,12 @@
         };
 
         /**
-        * Add transaction object to the transactions collection
-        */
+         * Add transaction object to the transactions collection
+         */
         factory.add = function (tx) {
           // Convert incoming object's addresses to checksummed ones
           tx = Web3Service.toChecksumAddress(tx);
-          
+
           var transactions = factory.get();
           transactions[tx.txHash] = tx;
           if (tx.callback) {
@@ -53,8 +53,8 @@
           factory.updates++;
           try {
             $rootScope.$digest();
+          } catch (e) {
           }
-          catch (e) {}
 
           Web3Service.web3.eth.getTransaction(
             tx.txHash,
@@ -72,8 +72,8 @@
           factory.updates++;
           try {
             $rootScope.$digest();
+          } catch (e) {
           }
-          catch (e) { }
         };
 
         factory.notifyObservers = function () {
@@ -81,8 +81,8 @@
         };
 
         /**
-        * Remove transaction identified by transaction hash from the transactions collection
-        */
+         * Remove transaction identified by transaction hash from the transactions collection
+         */
         factory.remove = function (txHash) {
           var transactions = factory.get();
           delete transactions[txHash];
@@ -90,37 +90,36 @@
           factory.updates++;
           try {
             $rootScope.$digest();
+          } catch (e) {
           }
-          catch (e) { }
         };
 
         /**
-        * Remove all transactions
-        */
+         * Remove all transactions
+         */
         factory.removeAll = function () {
           localStorage.removeItem("transactions");
           factory.updates++;
           try {
             $rootScope.$digest();
+          } catch (e) {
           }
-          catch (e) { }
         };
 
         /**
-        * Send transaction, signed by wallet service provider
-        */
+         * Send transaction, signed by wallet service provider
+         */
         factory.send = function (tx, cb) {
           Web3Service.sendTransaction(
             Web3Service.web3.eth,
             [
               tx
             ],
-            { onlySimulate: false },
+            {onlySimulate: false},
             function (e, txHash) {
               if (e) {
                 cb(e);
-              }
-              else {
+              } else {
                 factory.add(
                   {
                     txHash: txHash,
@@ -136,7 +135,7 @@
         };
 
         factory.simulate = function (tx, cb) {
-          var options = Object.assign({ onlySimulate: true }, tx);
+          var options = Object.assign({onlySimulate: true}, tx);
 
           Web3Service.sendTransaction(
             Web3Service.web3.eth,
@@ -147,8 +146,7 @@
             function (e, txHash) {
               if (e) {
                 cb(e);
-              }
-              else {
+              } else {
                 cb(null, txHash);
               }
             }
@@ -156,14 +154,13 @@
         };
 
         /**
-        * Sign transaction without sending it to an ethereum node
-        */
+         * Sign transaction without sending it to an ethereum node
+         */
         factory.signOffline = function (txObject, cb) {
           Wallet.getUserNonce(function (e, nonce) {
             if (e) {
               cb(e);
-            }
-            else {
+            } else {
               // Create transaction object
               var txInfo = {
                 from: Web3Service.coinbase,
@@ -177,8 +174,7 @@
               Web3Service.web3.eth.signTransaction(txInfo, function (e, signed) {
                 if (e) {
                   cb(e);
-                }
-                else {
+                } else {
                   cb(e, signed.raw);
                 }
               });
@@ -187,9 +183,9 @@
         };
 
         /**
-        * Sign transaction without sending it to an ethereum node. Needs abi,
-        * selected method to execute and related params.
-        */
+         * Sign transaction without sending it to an ethereum node. Needs abi,
+         * selected method to execute and related params.
+         */
         factory.signMethodOffline = function (tx, abi, method, params, cb) {
 
           // Get data
@@ -201,9 +197,9 @@
         };
 
         /**
-        * Send transaction, signed by wallet service provider. Needs abi,
-        * selected method to execute and related params.
-        */
+         * Send transaction, signed by wallet service provider. Needs abi,
+         * selected method to execute and related params.
+         */
         factory.sendMethod = function (tx, abi, method, params, cb) {
           // Instance contract
           var instance = Web3Service.web3.eth.contract(abi).at(tx.to);
@@ -214,12 +210,11 @@
             Web3Service.sendTransaction(
               instance[method],
               transactionParams,
-              { onlySimulate: false },
+              {onlySimulate: false},
               function (e, txHash) {
                 if (e) {
                   cb(e);
-                }
-                else {
+                } else {
                   // Add transaction
                   factory.add(
                     {
@@ -232,8 +227,7 @@
                   cb(null, txHash);
                 }
               });
-          }
-          catch (e) {
+          } catch (e) {
             cb(e);
           }
         };
@@ -241,7 +235,7 @@
         factory.simulateMethod = function (tx, abi, method, params, cb) {
           // Instance contract
           var instance = Web3Service.web3.eth.contract(abi).at(tx.to);
-          var options = Object.assign({ onlySimulate: true }, tx);
+          var options = Object.assign({onlySimulate: true}, tx);
 
           try {
             Web3Service.sendTransaction(
@@ -251,20 +245,18 @@
               function (e, txHash) {
                 if (e) {
                   cb(e);
-                }
-                else {
+                } else {
                   cb(null, txHash);
                 }
               });
-          }
-          catch (e) {
+          } catch (e) {
             cb(e);
           }
         };
 
         /**
-        * Send signed transaction
-        **/
+         * Send signed transaction
+         **/
         factory.sendRawTransaction = function (tx, cb) {
           Web3Service.web3.eth.sendRawTransaction(
             tx,
@@ -273,9 +265,9 @@
         };
 
         /**
-        * Internal loop, checking for transaction receipts and transaction info.
-        * calls callback after receipt is retrieved.
-        */
+         * Internal loop, checking for transaction receipts and transaction info.
+         * calls callback after receipt is retrieved.
+         */
         factory.checkReceipts = function () {
           // Create batch object
           var batch = Web3Service.web3.createBatch();
@@ -308,38 +300,26 @@
 
         factory.getEthereumChain = function () {
           return $q(function (resolve, reject) {
-            Web3Service.web3.eth.getBlock(0, function (e, block) {
+            Web3Service.web3.eth.getChainId(function (e, chainId) {
               var data = {};
 
               if (e) {
                 reject();
-              }
-              else if (block && block.hash == "0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3") {
-                data.chain = "mainnet";
-                data.etherscan = "https://etherscan.io";
+              } else if (chainId == 43113) {
+                data.chain = "Fuji testnet";
+                data.etherscan = "https://cchain.explorer.avax-test.network";
+                data.walletFactoryAddress = txDefault.walletFactoryAddresses["fuji"].address;
+
+              } else if (chainId == 43114) {
+                data.chain = "Avalanche mainnet";
+                data.etherscan = "https://cchain.explorer.avax-test.network";
                 data.walletFactoryAddress = txDefault.walletFactoryAddresses["mainnet"].address;
-              }
-              else if (block && block.hash == "0x41941023680923e0fe4d74a34bdac8141f2540e3ae90623718e47d66d1ca4a2d") {
-                data.chain = "ropsten";
-                data.etherscan = "https://ropsten.etherscan.io";
-                data.walletFactoryAddress = txDefault.walletFactoryAddresses["ropsten"].address;
-              }
-              else if (block && block.hash == "0xa3c565fc15c7478862d50ccd6561e3c06b24cc509bf388941c25ea985ce32cb9") {
-                data.chain = "kovan";
-                data.etherscan = "https://kovan.etherscan.io";
-                data.walletFactoryAddress = txDefault.walletFactoryAddresses["kovan"].address;
-              }
-              else if (block && block.hash == "0x6341fd3daf94b748c72ced5a5b26028f2474f5f00d824504e4fa37a75767e177") {
-                data.chain = "rinkeby";
-                data.etherscan = "https://rinkeby.etherscan.io";
-                data.walletFactoryAddress = txDefault.walletFactoryAddresses["rinkeby"].address;
-              }
-              else {
+
+              } else {
                 data.chain = "privatenet";
-                data.etherscan = "https://testnet.etherscan.io";
+                data.etherscan = "https://cchain.explorer.avax-test.network";
                 data.walletFactoryAddress = txDefault.walletFactoryAddresses["privatenet"].address;
               }
-
               resolve(data);
             });
           });

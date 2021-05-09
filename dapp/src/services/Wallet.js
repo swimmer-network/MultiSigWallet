@@ -446,7 +446,7 @@
 
               if (operation == 'import') {
                 validOwners[ownerKeys[y]] = {
-                  name : owners[ownerKeys[y]] ? owners[ownerKeys[y]] : 'Owner '  (y+1),
+                  name : owners[ownerKeys[y]] ? owners[ownerKeys[y]] : 'Owner ' + (y+1),
                   address : ownerKeys[y]
                 };
               } else {
@@ -633,20 +633,17 @@
       wallet.deployWithLimit = function (owners, requiredConfirmations, limit, cb) {
         var MyContract = Web3Service.web3.eth.contract(wallet.json.multiSigDailyLimit.abi);
         var gasNeeded = 3000000;
-
-        Web3Service.configureGas({gas: gasNeeded, gasPrice: wallet.txParams.gasPrice}, function (gasOptions){
-          MyContract.new(
-            owners,
-            requiredConfirmations,
-            limit,
-            wallet.txDefaults({
-              data: wallet.json.multiSigDailyLimit.binHex,
-              gas: gasOptions.gas,
-              gasPrice: gasOptions.gasPrice
-            }),
-            cb
-          );
-        });
+        MyContract.new(
+          owners,
+          requiredConfirmations,
+          limit,
+          wallet.txDefaults({
+            data: wallet.json.multiSigDailyLimit.binHex,
+            gas: gasNeeded,
+            gasPrice: wallet.txParams.gasPrice
+          }),
+          cb
+        );
       };
 
       wallet.deployWithLimitFactory = function (owners, requiredConfirmations, limit, cb) {
@@ -662,19 +659,17 @@
                 cb(e);
               }
               else {
-                Web3Service.configureGas({gas: Math.ceil(gas * 1.5), gasPrice: wallet.txParams.gasPrice}, function (gasOptions){
                   walletFactory.create(
-                    owners,
-                    requiredConfirmations,
-                    limit,
-                    wallet.txDefaults({
-                      data: wallet.json.multiSigDailyLimit.binHex,
-                      gas: gasOptions.gas,
-                      gasPrice: gasOptions.gasPrice
-                    }),
-                    cb
-                  );
-                });
+                  owners,
+                  requiredConfirmations,
+                  limit,
+                  wallet.txDefaults({
+                    data: wallet.json.multiSigDailyLimit.binHex,
+                    gas: Math.ceil(gas * 1.5),
+                    gasPrice: wallet.txParams.gasPrice
+                  }),
+                  cb
+                );
               }
             }
           );

@@ -1,7 +1,7 @@
 var txDefaultOrig =
 {
   websites: {
-    "wallet": "https://wallet.gnosis.pm",
+    "wallet": "https://multisig.pangolin.network/",
     "gnosis": "https://gnosis.pm",
     "ethGasStation": "https://safe-relay.gnosis.pm/api/v1/gas-station/"
   },
@@ -10,9 +10,9 @@ var txDefaultOrig =
     "privacyPolicy": "https://gnosis.io/privacy-policy",
     "imprint": "https://wallet.gnosis.pm/imprint.html"
   },
-  gasLimit: 3141592,
-  gasPrice: 18000000000,
-  ethereumNode: "https://mainnet.infura.io:443",
+  gasLimit: 350000,
+  gasPrice: 225 * 10e8,
+  ethereumNode: "https://api.avax.network/ext/bc/C/rpc",
   connectionChecker: {
     method : "OPTIONS",
     url : "https://www.google.com",
@@ -26,85 +26,84 @@ var txDefaultOrig =
   },
   wallet: "injected",
   defaultChainID: null,
-  // Mainnet
-  walletFactoryAddress: "0x6e95c8e8557abc08b46f3c347ba06f8dc012763f",
+  walletFactoryAddress: "0xf30D72705962fF7b3722164AAA9776f6b7314387",
   tokens: [
     {
-      'address': '0x6810e776880c02933d47db1b9fc05908e5386b96',
-      'name': 'Gnosis',
-      'symbol': 'GNO',
+      'address': '0x60781C2586D68229fde47564546784ab3fACA982',
+      'name': 'Pangolin',
+      'symbol': 'PNG',
       'decimals': 18
     },
     {
-      'address': '0x960b236A07cf122663c4303350609A66A7B288C0',
-      'name': 'Aragon Network',
-      'symbol': 'ANT',
-      'decimals': 18
+      'address': '0xf20d962a6c8f70c731bd838a3a388D7d48fA6e15',
+      'name': 'Ether',
+      'symbol': 'ETH',
+      'decimals': 6
     },
     {
-      'address': '0x48c80F1f4D53D5951e5D5438B54Cba84f29F32a5',
-      'name': 'Augur',
-      'symbol': 'REP',
-      'decimals': 18
-    },
-    {
-      'address': '0x1F573D6Fb3F13d689FF844B4cE37794d79a7FF1C',
-      'name': 'Bancor Network',
-      'symbol': 'BNT',
-      'decimals': 18
-    },
-    {
-      'address': '0x0D8775F648430679A709E98d2b0Cb6250d2887EF',
-      'name': 'Basic Attention Token',
-      'symbol': 'BAT',
-      'decimals': 18
-    },
-    {
-      'address': '0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359',
-      'name': 'DAI Stable Coin',
-      'symbol': 'DAI',
-      'decimals': 18
-    },
-    {
-      'address': '0x543Ff227F64Aa17eA132Bf9886cAb5DB55DCAddf',
-      'name': 'DAOstack',
-      'symbol': 'GEN',
-      'decimals': 18
-    },
-    {
-      'address': '0xe0b7927c4af23765cb51314a0e0521a9645f0e2a',
-      'name': 'Digix Global',
-      'symbol': 'DGD',
-      'decimals': 9
-    },
-    {
-      'address': '0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7',
-      'name': 'FirstBlood',
-      'symbol': '1ST',
-      'decimals': 18
-    },
-    {
-      'address': '0xa74476443119A942dE498590Fe1f2454d7D4aC0d',
-      'name': 'Golem',
-      'symbol': 'GNT',
-      'decimals': 18
-    },
-    {
-      'address': '0x888666CA69E0f178DED6D75b5726Cee99A87D698',
-      'name': 'Iconomi',
-      'symbol': 'ICN',
-      'decimals': 18
-    },
-    {
-      'address': '0x607F4C5BB672230e8672085532f7e901544a7375',
-      'name': 'iExec RLC',
-      'symbol': 'RLC',
-      'decimals': 9
-    },
-    {
-      'address': '0xc66ea802717bfb9833400264dd12c2bceaa34a6d',
+      'address': '0x8DF92E9C0508aB0030d432DA9F2C65EB1Ee97620',
       'name': 'Maker',
       'symbol': 'MKR',
+      'decimals': 18
+    },
+    {
+      'address': '0xde3A24028580884448a5397872046a019649b084',
+      'name': 'Tether USD',
+      'symbol': 'USDT',
+      'decimals': 18
+    },
+    {
+      'address': '0xB3fe5374F67D7a22886A0eE082b2E2f9d2651651',
+      'name': 'ChainLink Token',
+      'symbol': 'LINK',
+      'decimals': 18
+    },
+    {
+      'address': '0x8cE2Dee54bB9921a2AE0A63dBb2DF8eD88B91dD9',
+      'name': 'Aave Token',
+      'symbol': 'AAVE',
+      'decimals': 18
+    },
+    {
+      'address': '0xf39f9671906d8630812f9d9863bBEf5D523c84Ab',
+      'name': 'Uniswap',
+      'symbol': 'UNI',
+      'decimals': 18
+    },
+    {
+      'address': '0x408D4cD0ADb7ceBd1F1A1C33A0Ba2098E1295bAB',
+      'name': 'Wrapped BTC',
+      'symbol': 'WBTC',
+      'decimals': 8
+    },
+    {
+      'address': '0x53CEedB4f6f277edfDDEdB91373B044FE6AB5958',
+      'name': 'Compound',
+      'symbol': 'COMP',
+      'decimals': 18
+    },
+    {
+      'address': '0x421b2a69b886BA17a61C7dAd140B9070d5Ef300B',
+      'name': 'HuobiToken',
+      'symbol': 'HT',
+      'decimals': 18
+    },
+    {
+      'address': '0x39cf1BD5f15fb22eC3D9Ff86b0727aFc203427cc',
+      'name': 'SushiToken',
+      'symbol': 'SUSHI',
+      'decimals': 18
+    },
+    {
+      'address': '0xC84d7bfF2555955b44BDF6A307180810412D751B',
+      'name': 'UMA Voting Token v1',
+      'symbol': 'UMA',
+      'decimals': 18
+    },
+    {
+      'address': '0xaEb044650278731Ef3DC244692AB9F64C78FfaEA',
+      'name': 'Binance USD',
+      'symbol': 'BUSD',
       'decimals': 18
     },
     {
@@ -114,21 +113,21 @@ var txDefaultOrig =
       'decimals': 18
     },
     {
-      'address': '0xaec2e87e0a235266d9c5adc9deb4b2e29b54d009',
-      'name': 'SingularDTV',
-      'symbol': 'SNGLS',
-      'decimals': 0
+      'address': '0xbA7dEebBFC5fA1100Fb055a87773e1E99Cd3507a',
+      'name': 'Dai Stablecoin',
+      'symbol': 'DAI',
+      'decimals': 18
     },
     {
-      'address': '0xb64ef51c888972c908cfacf59b47c1afbc0ab8ac',
-      'name': 'Storjcoin X',
-      'symbol': 'SJCX',
-      'decimals': 8
+      'address': '0xC38f41A296A4493Ff429F1238e030924A1542e50',
+      'name': 'Snowball',
+      'symbol': 'SNOB',
+      'decimals': 18
     },
     {
-      'address': '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-      'name': 'Wrapped Ether',
-      'symbol': 'WETH',
+      'address': '0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7',
+      'name': 'Wrapped AVAX',
+      'symbol': 'WAVAX',
       'decimals': 18
     }
   ]
@@ -141,20 +140,12 @@ if (isElectron) {
 var txDefault = {
   ethereumNodes : [
     {
-      url : "https://mainnet.infura.io:443",
+      url : "https://api.avax.network/ext/bc/C/rpc",
       name: "Remote Mainnet"
     },
     {
-      url : "https://ropsten.infura.io:443",
-      name: "Remote Ropsten"
-    },
-    {
-      url : "https://kovan.infura.io:443",
-      name: "Remote Kovan"
-    },
-    {
-      url : "https://rinkeby.infura.io:443",
-      name: "Remote Rinkeby"
+      url : "https://api.avax-test.network/ext/bc/C/rpc",
+      name: "Remote Fuji"
     },
     {
       url : "http://localhost:8545",
@@ -163,24 +154,16 @@ var txDefault = {
   ],
   walletFactoryAddresses: {
     'mainnet': {
-      name: 'Mainnet',
+      name: 'Avalanche Mainnet',
       address: txDefaultOrig.walletFactoryAddress
     },
-    'ropsten': {
-      name: 'Ropsten',
-      address: '0x5cb85db3e237cac78cbb3fd63e84488cac5bd3dd'
-    },
-    'kovan': {
-      name: 'Kovan',
-      address: '0x2c992817e0152a65937527b774c7a99a84603045'
-    },
-    'rinkeby': {
-      name: 'Rinkeby',
-      address: '0x19ba60816abca236baa096105df09260a4791418'
+    'fuji': {
+      name: 'Fuji Testnet',
+      address: '0x93371Daa7d2E33A9C6cb29f47375AD4923F7e1DC'
     },
     'privatenet': {
       name: 'Privatenet',
-      address: '0xd79426bcee5b46fde413ededeb38364b3e666097'
+      address: '0x93371Daa7d2E33A9C6cb29f47375AD4923F7e1DC'
     }
   }
 };

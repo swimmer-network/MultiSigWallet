@@ -468,7 +468,6 @@ angular.module('multiSigWeb').run(['$templateCache', function($templateCache) {
     "    {{wallet.name}} {{balance|ether}}\n" +
     "  </h1>\n" +
     "  <h5 class=\"grey\">{{wallet.address}}</h5>\n" +
-    "  <span class=\"btn btn-success\" ng-click=\"showSafeMigrationModal()\">Safe Multisig Migration</span>\n" +
     "</div>\n" +
     "<!-- Owners panel -->\n" +
     "<div class=\"panel panel-default\">\n" +
@@ -1171,41 +1170,6 @@ angular.module('multiSigWeb').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('src/partials/modals/configureGas.html',
-    "<div class=\"modal-header\">\n" +
-    "    <h3 class=\"modal-title\">\n" +
-    "      Configure Gas\n" +
-    "    </h3>\n" +
-    "</div>\n" +
-    "<form class=\"form\" name=\"form\">\n" +
-    "    <div class=\"modal-body\">\n" +
-    "        <div class=\"form-group\">\n" +
-    "            <label for=\"value\">Gas limit:</label>\n" +
-    "            <input id=\"value\" type=\"number\" class=\"form-control\" ng-model=\"gasLimit\" step=\"any\" ng-change=\"calculateFee()\"\n" +
-    "                ng-min=\"minimumGasLimit\" max=\"999999999999999\" required >\n" +
-    "        </div>\n" +
-    "        <div class=\"form-group\">\n" +
-    "            <label for=\"value\">Gas price (GWei):</label>\n" +
-    "            <input id=\"value\" type=\"number\" class=\"form-control\" ng-model=\"gasPrice\" step=\"any\" min=\"0\" ng-change=\"calculateFee()\" \n" +
-    "                max=\"999999999999999\" required >\n" +
-    "        </div>\n" +
-    "        <div class=\"form-group\">\n" +
-    "            <label for=\"value\">Tx fees (ETH):</label>\n" +
-    "            <input id=\"value\" disabled type=\"number\" class=\"form-control\" ng-model=\"txFee\" step=\"any\" min=\"0\" max=\"999999999999999\" required >\n" +
-    "        </div>\n" +
-    "    </div>\n" +
-    "    <div class=\"modal-footer\">\n" +
-    "        <button type=\"button\" class=\"btn btn-default\" ng-click=\"send()\" ng-disabled=\"form.$invalid\">\n" +
-    "            Send transaction\n" +
-    "        </button>  \n" +
-    "        <button type=\"button\" class=\"btn btn-danger\" ng-click=\"cancel()\">\n" +
-    "            Cancel\n" +
-    "        </button>\n" +
-    "    </div>\n" +
-    "</form>"
-  );
-
-
   $templateCache.put('src/partials/modals/confirmTransaction.html',
     "<div class=\"modal-header\">\n" +
     "  <h3 class=\"modal-title\">\n" +
@@ -1255,7 +1219,7 @@ angular.module('multiSigWeb').run(['$templateCache', function($templateCache) {
     "<form class=\"form\" name=\"form\">\n" +
     "  <div class=\"modal-body\">\n" +
     "    <div class=\"form-group\">\n" +
-    "      <label for=\"value\">Amount (ETH):</label>\n" +
+    "      <label for=\"value\">Amount (AVAX):</label>\n" +
     "      <input id=\"value\" type=\"number\" class=\"form-control\" ng-model=\"amount\" step=\"any\" min=\"0\" max=\"999999999999999\" required >\n" +
     "    </div>\n" +
     "  </div>\n" +
@@ -1861,7 +1825,7 @@ angular.module('multiSigWeb').run(['$templateCache', function($templateCache) {
     "      <input id=\"required\" type=\"number\" class=\"form-control\" ng-min=\"1\" ng-max=\"{{maxAllowedConfirmations}}\" ng-model=\"confirmations\" required />\n" +
     "    </div>\n" +
     "    <div class=\"form-group\">\n" +
-    "      <label for=\"daily-limit\"> Daily limit (ETH) </label>\n" +
+    "      <label for=\"daily-limit\"> Daily limit (AVAX) </label>\n" +
     "      <input id=\"daily-limit\" type=\"number\" class=\"form-control\" ng-min=\"0\" max=\"999999999999999\" ng-model=\"limit\" required />\n" +
     "    </div>\n" +
     "    <div class=\"panel panel-default\">\n" +
@@ -2504,7 +2468,7 @@ angular.module('multiSigWeb').run(['$templateCache', function($templateCache) {
     "      <input type=\"text\" class=\"form-control\" ng-model=\"name\" name=\"name\" />\n" +
     "    </div>\n" +
     "    <div class=\"form-group\">\n" +
-    "      <label for=\"value\">Amount (ETH)</label>\n" +
+    "      <label for=\"value\">Amount (AVAX)</label>\n" +
     "      <input id=\"value\" type=\"number\" class=\"form-control\" ng-model=\"tx.value\" min=\"0\" max=\"999999999999999\" ng-required=\"!abi\">\n" +
     "    </div>\n" +
     "    <div class=\"form-group\">\n" +
@@ -2559,7 +2523,7 @@ angular.module('multiSigWeb').run(['$templateCache', function($templateCache) {
     "<form name=\"form\" class=\"form\">\n" +
     "  <div class=\"modal-body\">\n" +
     "    <div class=\"form-group\">\n" +
-    "      <label for=\"limit\">Daily limit (ETH)</label>\n" +
+    "      <label for=\"limit\">Daily limit (AVAX)</label>\n" +
     "      <input id=\"limit\" type=\"number\" step=\"any\" ng-model=\"limit\" min=\"0\" max=\"999999999999999\" class=\"form-control\" required />\n" +
     "    </div>\n" +
     "  </div>\n" +
@@ -2820,7 +2784,7 @@ angular.module('multiSigWeb').run(['$templateCache', function($templateCache) {
     "      <input type=\"text\" class=\"form-control\" ng-model=\"name\" name=\"name\" />\n" +
     "    </div>\n" +
     "    <div class=\"form-group\">\n" +
-    "      <label for=\"value\">Amount (ETH)</label>\n" +
+    "      <label for=\"value\">Amount (AVAX)</label>\n" +
     "      <input id=\"value\" type=\"number\" class=\"form-control\" ng-model=\"tx.value\" min=\"0\" max=\"999999999999999\" ng-required=\"!abi\">\n" +
     "    </div>\n" +
     "    <div class=\"form-group\">\n" +
@@ -2901,7 +2865,7 @@ angular.module('multiSigWeb').run(['$templateCache', function($templateCache) {
     "<form name=\"form\" class=\"form\">\n" +
     "  <div class=\"modal-body\">\n" +
     "    <div class=\"form-group\">\n" +
-    "      <label for=\"value\">Amount (ETH)</label>\n" +
+    "      <label for=\"value\">Amount (AVAX)</label>\n" +
     "      <input id=\"value\" type=\"number\" class=\"form-control\" ng-model=\"tx.value\" ng-min=\"0\" max=\"999999999999999\" required>\n" +
     "    </div>\n" +
     "    <div class=\"form-group\">\n" +

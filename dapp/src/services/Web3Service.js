@@ -267,37 +267,34 @@
           } else {
             gasConfigurationData = params[params.length - 1];
           }
+          var refinedTxOptions = Object.assign({}, params[params.length - 1]);
 
-
-          factory.configureGas(gasConfigurationData, function (gasOptions) {
-            var refinedTxOptions = Object.assign({}, params[params.length - 1], gasOptions);
-            // Ugly but needed
-            params[params.length - 1] = refinedTxOptions
-            // Simulate first
-            function sendIfSuccess(e, result) {
-              if (e) {
-                cb(e);
-              }
-              else {
-                if (result) {
-                  method.sendTransaction.apply(method.sendTransaction, params.concat(cb));
-                }
-                else {
-                  cb("Simulated transaction failed");
-                }
-              }
-            }
-
-            var args;
-            if (options && options.onlySimulate) {
-              args = params.concat(cb);
-              method.call.apply(method.call, args);
+          // Ugly but needed
+          params[params.length - 1] = refinedTxOptions
+          // Simulate first
+          function sendIfSuccess(e, result) {
+            if (e) {
+              cb(e);
             }
             else {
-              args = params.concat(sendIfSuccess);
-              method.call.apply(method.call, args);
+              if (result) {
+                method.sendTransaction.apply(method.sendTransaction, params.concat(cb));
+              }
+              else {
+                cb("Simulated transaction failed");
+              }
             }
-          });
+          }
+
+          var args;
+          if (options && options.onlySimulate) {
+            args = params.concat(cb);
+            method.call.apply(method.call, args);
+          }
+          else {
+            args = params.concat(sendIfSuccess);
+            method.call.apply(method.call, args);
+          }
         };
 
         // /**
