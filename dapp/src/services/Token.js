@@ -94,7 +94,7 @@
               count,
               Wallet.txDefaults({
                 gas: 500000,
-                gasPrice: wallet.txParams.gasPrice
+                gasPrice: Wallet.txParams.gasPrice
               }),
               options,
               cb);
