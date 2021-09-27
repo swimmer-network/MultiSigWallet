@@ -22,6 +22,7 @@ jobs:
         with:
           node-version: ${{ env.node_version }}
           cache: 'npm'
+      - run: apt install -y libusb-1.0-0-dev
       - run: npm install node-gyp
       - run: npm install -g grunt-cli
       - run: npm install
