@@ -3,6 +3,8 @@ Ethereum Multisignature Wallet
 
 ## This repo has been deprecated and replaced by Safe Multisig. Please find the Safe repository here: https://github.com/gnosis/safe-contracts
 
+This repo is a real pain in the ass to run locally, so I've included the Build files under `multisigWalletBuildFiles`. This may be easier to adjust and then just push the static build to a hosting service.
+
 [![Join the chat at https://gitter.im/gnosis/MultiSigWallet](https://badges.gitter.im/gnosis/MultiSigWallet.svg)](https://gitter.im/gnosis/MultiSigWallet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 The purpose of multisig wallets is to increase security by requiring multiple parties to agree on transactions before execution. Transactions can be executed only when confirmed by a predefined number of owners. A web user interface can be found [here](/dapp).
