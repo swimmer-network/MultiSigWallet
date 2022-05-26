@@ -1269,7 +1269,7 @@ angular.module('multiSigWeb').run(['$templateCache', function($templateCache) {
   $templateCache.put('src/partials/modals/disclaimer.html',
     "<div class=\"modal-header\">\n" +
     "  <div class=\"bootstrap-dialog-header\">\n" +
-    "    <div class=\"bootstrap-dialog-title\">Terms of Use and Privacy Policy</div>\n" +
+    "    <div class=\"bootstrap-dialog-title\">Terms of Use and Privacy Policy2</div>\n" +
     "  </div>  \n" +
     "</div>\n" +
     "<div class=\"modal-body\">\n" +
@@ -1285,7 +1285,7 @@ angular.module('multiSigWeb').run(['$templateCache', function($templateCache) {
     "    <a href=\"{{ websites.wallet }}\" class=\"prevent-focus\" target=\"_blank\">{{ websites.wallet }}</a> to sign transactions.\n" +
     "    Use <a href=\"{{ websites.wallet }}\" target=\"_blank\">{{ websites.wallet }}</a> only to\n" +
     "    check the status of your wallet. Use a locally installed version for signing.\n" +
-    "    A version can be obtained <a href=\"https://github.com/pangolin-community/MultiSigWallet\" target=\"_blank\">here</a>.\n" +
+    "    A version can be obtained <a href=\"https://github.com/swimmer-network/MultiSigWallet\" target=\"_blank\">here</a>.\n" +
     "  </p>\n" +
     "  <p>\n" +
     "    All smart contracts have been audited carefully multiple times.\n" +
