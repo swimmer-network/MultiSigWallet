@@ -305,15 +305,21 @@
 
               if (e) {
                 reject();
-              } else if (chainId == 43113) {
-                data.chain = "Fuji testnet";
+              } else if (chainId == 73771) {
+                data.chain = "Swimmer testnet";
                 data.etherscan = "https://cchain.explorer.avax-test.network";
-                data.walletFactoryAddress = txDefault.walletFactoryAddresses["fuji"].address;
+                data.walletFactoryAddress = txDefault.walletFactoryAddresses["testnet"].address;
 
-              } else if (chainId == 43114) {
-                data.chain = "Avalanche mainnet";
-                data.etherscan = "https://cchain.explorer.avax-test.network";
+              } else if (chainId == 73772) {
+                data.chain = "Swimmer mainnet";
+                data.etherscan = "https://avax-cra-rpc.gateway.pokt.network/";
                 data.walletFactoryAddress = txDefault.walletFactoryAddresses["mainnet"].address;
+
+              
+              } else if (chainId == 73773) {
+                data.chain = "Swimmer Vanilla Testnet";
+                data.etherscan = "https://vanilla-testnet-rpc.swimmer.network/ext/bc/qVd94hjZUfN5h5ZPxozos1wHjaszipeGJoYYxxMJ3dqZYFjZ3/rpc";
+                data.walletFactoryAddress = txDefault.walletFactoryAddresses["vanilla"].address;
 
               } else {
                 data.chain = "privatenet";
