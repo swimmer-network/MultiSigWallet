@@ -3,6 +3,10 @@ Ethereum Multisignature Wallet
 
 ## This repo has been deprecated and replaced by Safe Multisig. Please find the Safe repository here: https://github.com/gnosis/safe-contracts
 
+Work with node v8.12.0
+Solc compiler: 0.4.15..bddb
+
+
 This repo is a real pain in the ass to run locally, so I've included the Build files under `multisigWalletBuildFiles`. This may be easier to adjust and then just push the static build to a hosting service.
 
 [![Join the chat at https://gitter.im/gnosis/MultiSigWallet](https://badges.gitter.im/gnosis/MultiSigWallet.svg)](https://gitter.im/gnosis/MultiSigWallet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
